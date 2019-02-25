@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Tasks</h3>
+<div class="row">
+    <div class="twelve columns">
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form.error }}
+            {{ form }}<br />
+            <input type='submit' value='ok' />
+        </form>
+    </div>
+</div>
+<hr />
+
+<h4>Tasks</h4>
+<table style="width: 100%">
+    <thead><tr><th>Id</th><th>Url</th><th>Url length</th><th>Job</th><th>Result</th><th>Date</th></tr></thead>
+    <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.url }}</td>
+                <td>{{ task.url_length }}</td>
+                <td>{{ task.job_id }}</td>
+                <td>{{ task.result }}</td><td>{{ task.created_on|date:"d/m/Y H:i" }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+{% endblock %}
