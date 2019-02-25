@@ -22,11 +22,7 @@ class TasksHomeFormView(FormView):
         # get_url_length.delay(task.id)
         transaction.on_commit(lambda: get_url_length.delay(task.id))
 
-
-        print("BC")
-        time.sleep(5)
-        print("AC")
-
+        time.sleep(1)
 
         return super(TasksHomeFormView, self).form_valid(form)
 
